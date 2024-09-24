@@ -12,7 +12,7 @@
     <url>https://spring-petclinic.github.io/</url>
 
     <properties>
-
+         <jacoco-maven-plugin>0.8.6</jacoco-maven-plugin>
         <!-- Generic properties -->
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -293,6 +293,26 @@
 
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
     <build>
+         <plugin> 
+          <groupId>org.jacoco</groupId> 
+            <artifactId>jacoco-maven-plugin</artifactId> 
+            <version>${jacoco-maven-plugin}</version> 
+            <executions> 
+              <execution> 
+                <goals> 
+                  <goal>prepare-agent</goal> 
+                </goals> 
+               </execution> 
+              <execution> 
+                <id>report</id> 
+                <phase>prepare-package</phase> 
+                <goals> 
+                  <goal>report</goal> 
+                </goals> 
+              </execution> 
+            </executions> 
+          </plugin> 
+
         <defaultGoal>install</defaultGoal>
         <finalName>petclinic</finalName>
         <resources>
